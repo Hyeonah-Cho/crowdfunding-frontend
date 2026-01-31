@@ -4,7 +4,6 @@ function NavBar() {
   return (
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/fundraiser">Fundraiser</Link>
     </nav>
   );
 }

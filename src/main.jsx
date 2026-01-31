@@ -15,7 +15,7 @@ const myRouter = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/fundraiser",
+        path: "/fundraiser/:id",
         element: <FundraiserPage />,
       },
     ],
