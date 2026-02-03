@@ -1,0 +1,12 @@
+:root {
+  --bg: #0b0f10;
+  --text: #f1f5f9;
+  --muted: #8b98a5;
+  --brand: #a590e8;
+  --brand-2: #e57373;
+  --card: #12171c;
+  --ring: rgba(106, 164, 255, 0.45);
+
+  --loading: #555;
+  --error: #b00020;
+}

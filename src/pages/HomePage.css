@@ -1,6 +1,39 @@
-#fundraiser-list {
+.home-page {
+  height: 100vh; /* Scroll */
+  overflow-y: auto; /* HomePage is the scroll container */
+  scroll-snap-type: y mandatory;
+}
+
+/* Snap - hero & content */
+.home-hero,
+.home-content {
+  scroll-snap-align: start;
+}
+
+/* Make hero full */
+.home-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+}
+
+/* grid section */
+.home-content {
+  padding-top: 24px;
+}
+
+.fundraiser-list {
   display: grid;
-  grid-template-columns: 30% 30% 30%;
-  column-gap: 10px;
-  row-gap: 10px;
+  grid-template-columns: 1fr; /* mobile */
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .fundraiser-list {
+    grid-template-columns: 30% 30% 30%; /* desktop */
+    column-gap: 10px;
+    row-gap: 10px;
+  }
 }

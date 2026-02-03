@@ -1,0 +1,24 @@
+Todo:
+
+- [x] Make Home more presentable
+- [x] Add design to the Navbar
+- [x] Create and add brand icon to the navbar
+- [ ] Work on the project requirements
+- [ ] Make sure all the data in the backend has its place to be resented
+  - [ ] Description
+  - [ ] Pledges
+  - [ ] Image - on each fundraiser
+  - [ ] Login
+  - [ ] User side frontend to create a fundraiser
+  - [ ] User side frontend to create a pledge
+  - [ ] Image upload tool for a user when creating funraiser
+- [ ] Leave the footer "By Hyeonah Cho" at the bottom right
+- [ ] More CSS work
+  - [ ] Hamburger for navbar
+  - [ ] Snap scroll.. I can't apply this one to Layout as it should only be applied HomePage but I don't like having two scroll bars in Home.. hang on.. is this the same on other pages regardless of having snap scroll? hmm what if I remove the Layout scroll on Home page? is it even possible? I can't remove the scrollbar on Home as the random snap behaviour will confuse users. I think a lot of other websites would have the same feature i.e. snap scroll only on Home page. How to they handle this issue?
+- [ ] Make the brand name and icon area as a link to Home
+- [ ] More backend work and the corresponding frontend work
+  - [ ] Comments on fundraisers
+  - [ ] Profile (When logged in, change the Login menu in the navbar to Profile and also add Logout somewhere - Refer to the Laravel project)
+- [ ] Make error messages better - Descriptive for users
+- [ ] Make functions (components/hooks) for repeated code

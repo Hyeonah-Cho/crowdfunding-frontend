@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar.jsx";
+import "./Layout.css";
 
 function Layout() {
   return (
     <div>
       <NavBar />
-      <Outlet />
+      <main id="app-container">
+        <Outlet />
+      </main>
       <footer>By Hyeonah Cho</footer>
     </div>
   );
