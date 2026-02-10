@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { useAuth } from "../hooks/use-auth.js";
 
 function NavBar() {
+  const { auth, setAuth } = useAuth();
+  const handleLogout = () => {
+    window.localStorage.removeItem("token");
+    setAuth({ token: null });
+  };
   return (
     <nav className="navbar">
       <div className="navbar-inner">
@@ -11,7 +17,7 @@ function NavBar() {
             alt="SoothingNest logo"
             className="brand-icon"
           />
-          <span className="brand-text">SoothingNest</span>
+          <span className="brand-text">Soothing&est</span>
         </div>
         <div className="navbar-menu">
           <Link to="/" className="navbar-link">
@@ -26,9 +32,15 @@ function NavBar() {
           <Link to="/contact" className="navbar-link">
             Cantact
           </Link>
-          <Link to="/login" className="navbar-link">
-            Login
-          </Link>
+          {auth.token ? (
+            <Link to="/" className="navbar-link" onClick={handleLogout}>
+              Sign out
+            </Link>
+          ) : (
+            <Link to="/login" className="navbar-link">
+              Sign in
+            </Link>
+          )}
         </div>
       </div>
     </nav>

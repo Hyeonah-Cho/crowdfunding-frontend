@@ -12,7 +12,7 @@ async function postLogin(username, password) {
   });
 
   if (!response.ok) {
-    const fallbackError = `Error trying to login`; // This can be quotes or double quotes but if I want to use any variable like `Error trying to login: ${statusCode}` -> backticks are a must. Also backticks for multiple lines of the message.
+    const fallbackError = `Error trying to sign in`; // This can be quotes or double quotes but if I want to use any variable like `Error trying to login: ${statusCode}` -> backticks are a must. Also backticks for multiple lines of the message.
 
     const data = await response.json().catch(() => {
       throw new Error(fallbackError);

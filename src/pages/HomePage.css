@@ -37,3 +37,7 @@
     row-gap: 10px;
   }
 }
+
+.italic {
+  font-style: italic;
+}

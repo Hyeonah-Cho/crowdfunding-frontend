@@ -4,13 +4,51 @@ Todo:
 - [x] Add design to the Navbar
 - [x] Create and add brand icon to the navbar
 - [ ] Work on the project requirements
+  - [x] Be separated into two distinct projects: an API built using the Django Rest Framework and a website built using React.
+  - [x] Have a cool name, bonus points if it includes a pun and/or missing vowels. See https://namelix.com/ for inspiration. <sup><sup>(Bonus Points are meaningless)</sup></sup>
+  - [x] Have a clear target audience.
+  - [x] Have user accounts. A user should have at least the following attributes:
+    - [x] Username
+    - [x] Email address
+    - [x] Password
+  - [x] Ability to create a “fundraiser” to be crowdfunded which will include at least the following attributes:
+    - [x] Title
+    - [x] Owner (a user)
+    - [x] Description
+    - [x] Image
+    - [x] Target amount to raise
+    - [x] Whether it is currently open to accepting new supporters or not
+    - [x] When the fundraiser was created
+    - [x] Ability to “pledge” to a fundraiser. A pledge should include at least the following attributes:
+      - [x] An amount
+      - [x] The fundraiser the pledge is for
+      - [x] The supporter/user (i.e. who created the pledge)
+      - [x] Whether the pledge is anonymous or not
+      - [x] A comment to go along with the pledge
+  - [x] Implement suitable update/delete functionality, e.g. should a fundraiser owner be allowed to update its description?
+  - [x] Implement suitable permissions, e.g. who is allowed to delete a pledge?
+  - [ ] Return the relevant status codes for both successful and unsuccessful requests to the API.
+  - [ ] Handle failed requests gracefully (e.g. you should have a custom 404 page rather than the default error page).
+  - [ ] Deploy React (Content avaialble in She Codes github)
+  - [x] Use Token Authentication, including an endpoint to obtain a token along with the current user's details.
+  - [ ] Implement responsive design.
+
+  - [ ] Readme.md
+    - [ ] A link to the deployed project.
+    - [ ] A screenshot of the homepage
+    - [ ] A screenshot of the fundraiser creation page
+    - [ ] A screenshot of the fundraiser creation form
+    - [ ] A screenshot of a fundraiser with pledges
+    - [ ] A screenshot of the resulting page when an unauthorized user attempts to edit a fundraiser (optional, depending on whether or not this functionality makes sense in your app!)
+
 - [ ] Make sure all the data in the backend has its place to be resented
-  - [ ] Description
-  - [ ] Pledges
+  - [x] Sign up
+  - [x] Description
+  - [x] Pledges
   - [ ] Image - on each fundraiser
-  - [ ] Login
-  - [ ] User side frontend to create a fundraiser
-  - [ ] User side frontend to create a pledge
+  - [x] Login
+  - [x] User side frontend to create a fundraiser
+  - [x] User side frontend to create a pledge
   - [ ] Image upload tool for a user when creating funraiser
 - [ ] Leave the footer "By Hyeonah Cho" at the bottom right
 - [ ] More CSS work

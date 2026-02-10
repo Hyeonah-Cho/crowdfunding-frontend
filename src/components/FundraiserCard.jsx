@@ -3,7 +3,9 @@ import "./FundraiserCard.css";
 
 function FundraiserCard(props) {
   const { fundraiserData } = props;
-  const fundraiserLink = `fundraiser/${fundraiserData.id}`;
+  // Relative path example: "fundraiser/2" → resolved based on the current route
+  // Absolute path example: "/fundraiser/2" → always resolved from the root
+  const fundraiserLink = `/fundraiser/${fundraiserData.id}`;
 
   return (
     <div className="fundraiser-card">

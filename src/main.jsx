@@ -6,9 +6,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import FundraiserPage from "./pages/FundraiserPage";
+import FundraisersPage from "./pages/FundraisersPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import CreateFundraiserPage from "./pages/CreateFundraiserPage";
+import { AuthProvider } from "./components/AuthProvider";
+import { RequireAuth } from "./components/RequireAuth";
 
 const myRouter = createBrowserRouter([
   {
@@ -24,6 +29,10 @@ const myRouter = createBrowserRouter([
         element: <FundraiserPage />,
       },
       {
+        path: "/fundraisers",
+        element: <FundraisersPage />,
+      },
+      {
         path: "/about",
         element: <AboutPage />,
       },
@@ -35,12 +44,27 @@ const myRouter = createBrowserRouter([
         path: "/login",
         element: <LoginPage />,
       },
+      {
+        path: "/signup",
+        element: <SignupPage />,
+      },
+      {
+        element: <RequireAuth />,
+        children: [
+          {
+            path: "/fundraiser/create",
+            element: <CreateFundraiserPage />,
+          },
+        ],
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={myRouter} />
+    <AuthProvider>
+      <RouterProvider router={myRouter} />
+    </AuthProvider>
   </StrictMode>,
 );
