@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFundraiser from "../hooks/use-fundraiser";
 import PledgeForm from "../components/PledgeForm";
+import { ApiError } from "../lib/api";
 
 function FundraiserPage() {
   // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useFundraiser hook.
@@ -18,10 +19,12 @@ function FundraiserPage() {
   // Debugging
   // console.log(isLoading);
 
-  if (isLoading) {
-    return <p>loading...</p>;
-  }
+  if (isLoading) return <p>loading...</p>;
+
   if (error) {
+    if (error instanceof ApiError && error.status === 404) {
+      return <p>Something went wrong. Couldn't find the fundraiser.</p>;
+    }
     return <p>{error.message}</p>;
   }
 

@@ -14,6 +14,7 @@ import SignupPage from "./pages/SignupPage";
 import CreateFundraiserPage from "./pages/CreateFundraiserPage";
 import { AuthProvider } from "./components/AuthProvider";
 import { RequireAuth } from "./components/RequireAuth";
+import NotFound from "./pages/NotFound";
 
 const myRouter = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const myRouter = createBrowserRouter([
             element: <CreateFundraiserPage />,
           },
         ],
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

@@ -29,7 +29,7 @@ Todo:
   - [x] Implement suitable permissions, e.g. who is allowed to delete a pledge?
   - [ ] Return the relevant status codes for both successful and unsuccessful requests to the API.
   - [ ] Handle failed requests gracefully (e.g. you should have a custom 404 page rather than the default error page).
-  - [ ] Deploy React (Content avaialble in She Codes github)
+  - [x] Deploy React (Content avaialble in She Codes github)
   - [x] Use Token Authentication, including an endpoint to obtain a token along with the current user's details.
   - [ ] Implement responsive design.
 
