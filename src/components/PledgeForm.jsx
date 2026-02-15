@@ -2,8 +2,15 @@ import postPledge from "../api/post-pledge.js";
 import { useState } from "react";
 import { useAuth } from "../hooks/use-auth.js";
 
-function PledgeForm({ fundraiserId }) {
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+
+function PledgeForm({ fundraiserId, onSuccess }) {
   const { auth } = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [pledgeData, setPledgeData] = useState({
     amount: "",
     comment: "",
@@ -22,24 +29,30 @@ function PledgeForm({ fundraiserId }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!pledgeData.amount || !pledgeData.comment) return;
+    if (!pledgeData.amount) return;
 
     const payload = {
       ...pledgeData,
+      amount: Number(pledgeData.amount),
       fundraiser: Number(fundraiserId),
     };
 
-    await postPledge(payload, auth.token);
-    window.location.reload();
-    // Reset the pledge form
-    setPledgeData({ amount: "", comment: "", anonymous: false });
+    setIsSubmitting(true);
+    try {
+      await postPledge(payload, auth.token);
+      // Reset the pledge form
+      setPledgeData({ amount: "", comment: "", anonymous: false });
+      if (onSuccess) onSuccess();
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="amount">Amount:</label>
-        <input
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor="amount">Amount (AUD)</Label>
+        <Input
           required
           type="number"
           id="amount"
@@ -50,36 +63,30 @@ function PledgeForm({ fundraiserId }) {
         />
       </div>
 
-      <div>
-        <label htmlFor="comment">Comment:</label>
-        <input
-          required
+      <div className="space-y-2">
+        <Label htmlFor="comment">Comment</Label>
+        <Textarea
           id="comment"
           value={pledgeData.comment}
-          placeholder="Enter comment"
+          placeholder="Leave a short message"
           onChange={handleChange}
         />
       </div>
 
-      <div>
-        <label htmlFor="anonymous">Anonymous:</label>
-        <input
-          type="checkbox"
+      <div className="flex items-center gap-2">
+        <Checkbox
           id="anonymous"
           checked={pledgeData.anonymous}
-          onChange={handleChange}
+          onCheckedChange={(checked) =>
+            setPledgeData((prev) => ({ ...prev, anonymous: Boolean(checked) }))
+          }
         />
+        <Label htmlFor="anonymous">Support anonymously</Label>
       </div>
 
-      <button type="submit">Submit</button>
-      <style>
-        {`
-    input:invalid {
-      border: 1px solid #ff6b6b;
-      background-color: #fff5f5;
-    }
-  `}
-      </style>
+      <Button type="submit" disabled={isSubmitting} className="w-full">
+        {isSubmitting ? "Submitting..." : "Submit"}
+      </Button>
     </form>
   );
 }

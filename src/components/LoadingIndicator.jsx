@@ -1,3 +1,5 @@
+// Not used yet...
+
 import "./LoadingIndicator.css";
 
 export const LoadingIndicator = ({

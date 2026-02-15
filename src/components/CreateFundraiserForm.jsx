@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../hooks/use-auth.js";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 function CreateFundraiserForm() {
   const navigateTo = useNavigate();
   const { auth } = useAuth();
@@ -38,58 +44,58 @@ function CreateFundraiserForm() {
   };
 
   return (
-    <form>
-      <div>
-        <label htmlFor="title">Title:</label>
-        <input
-          required
-          type="text"
-          id="title"
-          placeholder="Enter title"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="description">Description:</label>
-        <textarea
-          required
-          id="description"
-          placeholder="Enter description"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="goal">Goal:</label>
-        <input
-          required
-          type="number"
-          id="goal"
-          placeholder="Enter goal"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="image">Image:</label>
-        <input
-          required
-          type="url"
-          id="image"
-          placeholder="Enter link to image"
-          onChange={handleChange}
-        />
-      </div>
-      <button type="button" onClick={handleSubmit}>
-        Submit
-      </button>
-      <style>
-        {`
-    input:invalid, textarea:invalid{
-      border: 1px solid #ff6b6b;
-      background-color: #fff5f5;
-    }
-  `}
-      </style>
-    </form>
+    <Card className="rounded-lg">
+      <CardHeader>
+        <CardTitle className="text-xl">Create a Life</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="title">Title</Label>
+            <Input
+              required
+              type="text"
+              id="title"
+              placeholder="Give this Life a name"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="description">Description</Label>
+            <Textarea
+              required
+              id="description"
+              placeholder="What happened, and what care is needed?"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="goal">Goal (AUD)</Label>
+            <Input
+              required
+              type="number"
+              id="goal"
+              min="1"
+              placeholder="Enter "
+              onChange={handleChange}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="image">Image</Label>
+            <Input
+              required
+              type="url"
+              id="image"
+              placeholder="Enter link to image"
+              onChange={handleChange}
+            />
+          </div>
+          <Button type="submit" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
   );
 }
 

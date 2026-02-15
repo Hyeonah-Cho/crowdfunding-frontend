@@ -3,11 +3,16 @@ import postLogin from "../api/post-login.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth.js";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 function LoginForm() {
   const location = useLocation();
   const from = location.state?.from || "/"; // Send the user to Home
   const navigateTo = useNavigate(); // To redirect the users after logging in. The URL where I want to redirect the users to can be set up using the variable navigateTo at the bottom after a login action.
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -39,33 +44,37 @@ function LoginForm() {
     }
   };
   return (
-    <form>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          placeholder="Enter username"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Password"
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit" onClick={handleSubmit}>
-        Sing In
-      </button>
-      <button type="button" onClick={() => navigateTo("/signup")}>
-        Sign Up
-      </button>
-      {/* type here can also be type="button" but it will only allow a click action whereaas "submit" allows users to hit Enter to trigger the button tag. */}
-    </form>
+    <Card className="rounded-lg">
+      <CardHeader>
+        <CardTitle className="text-xl">Sign in</CardTitle>
+      </CardHeader>
+
+      <CardContent className="space-y-5">
+        <form className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="username">Username</Label>
+            <Input type="text" id="username" onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="password">Password</Label>
+            <Input type="password" id="password" onChange={handleChange} />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <Button type="submit" onClick={handleSubmit}>
+              Sing In
+            </Button>
+            <Button
+              variant="outline"
+              type="button"
+              onClick={() => navigateTo("/signup", { state: { from } })}
+            >
+              Sign Up
+            </Button>
+            {/* type here can also be type="button" but it will only allow a click action whereaas "submit" allows users to hit Enter to trigger the button tag. */}
+          </div>
+        </form>
+      </CardContent>
+    </Card>
   );
 }
 

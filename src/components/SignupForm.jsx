@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
 import postSignup from "../api/post-signup.js";
 import postLogin from "../api/post-login.js";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth.js";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // useState registers a value that React needs to track, and provides a variable to read that value and a function to request an update to it.
 
 // useEffect runs after a render has finished, reads values stored via useState to compare or compute them, and updates other state if needed. The array at the end of useEffect specifies which values this effect should watch, and the effect runs when any of those values change.
 
 function SignupForm() {
+  const location = useLocation();
+  const from = location.state?.from || "/";
   const navigateTo = useNavigate();
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [credentials, setCredentials] = useState({
     username: "",
@@ -60,73 +67,63 @@ function SignupForm() {
           setAuth({
             token: loginResponse.token,
           });
-          navigateTo("/");
+          navigateTo(from, { replace: true });
         });
     }
   };
 
   return (
-    <form>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input
-          required
-          type="text"
-          id="username"
-          placeholder="Enter username"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          required
-          type="email"
-          id="email"
-          placeholder="Enter email"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          required
-          type="password"
-          id="password"
-          placeholder="Password"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="confirmPassword">Confirm password:</label>
-        <input
-          required
-          type="password"
-          id="confirmPassword"
-          placeholder="Confirm Password"
-          onChange={handleChange}
-        />
-      </div>
-      {!passwordsMatch && (
-        <div style={{ color: "red", fontSize: "0.9rem" }}>
-          Passwords don't match
-        </div>
-      )}
-      {/* false && "hello" -> false
+    <Card className="rounded-lg">
+      <CardHeader>
+        <CardTitle className="text-xl">Create an account</CardTitle>
+      </CardHeader>
+
+      <CardContent className="space-y-5">
+        <form className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="username">Username</Label>
+            <Input required type="text" id="username" onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input required type="email" id="email" onChange={handleChange} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="password">Password</Label>
+            <Input
+              required
+              type="password"
+              id="password"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="confirmPassword">Confirm password</Label>
+            <Input
+              required
+              type="password"
+              id="confirmPassword"
+              onChange={handleChange}
+            />
+          </div>
+          {!passwordsMatch && (
+            <div style={{ color: "red", fontSize: "0.9rem" }}>
+              Passwords don't match
+            </div>
+          )}
+          {/* false && "hello" -> false
           true && "hello" -> "hello" */}
-      <button disabled={!passwordsMatch} type="button" onClick={handleSubmit}>
-        Sign Up
-      </button>
-      {/* type here can also be type="submit" but it will also allow an Enter action whereaas "button" allows users to click to trigger the button tag. */}
-      <style>
-        {`
-    input:invalid {
-      border: 1px solid #ff6b6b;
-      background-color: #fff5f5;
-    }
-  `}
-      </style>
-    </form>
+          <Button
+            disabled={!passwordsMatch}
+            type="button"
+            onClick={handleSubmit}
+          >
+            Sign Up
+          </Button>
+          {/* type here can also be type="submit" but it will also allow an Enter action whereaas "button" allows users to click to trigger the button tag. */}
+        </form>
+      </CardContent>
+    </Card>
   );
 }
 

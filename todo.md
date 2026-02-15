@@ -3,7 +3,7 @@ Todo:
 - [x] Make Home more presentable
 - [x] Add design to the Navbar
 - [x] Create and add brand icon to the navbar
-- [ ] Work on the project requirements
+- [x] Work on the project requirements
   - [x] Be separated into two distinct projects: an API built using the Django Rest Framework and a website built using React.
   - [x] Have a cool name, bonus points if it includes a pun and/or missing vowels. See https://namelix.com/ for inspiration. <sup><sup>(Bonus Points are meaningless)</sup></sup>
   - [x] Have a clear target audience.
@@ -27,11 +27,11 @@ Todo:
       - [x] A comment to go along with the pledge
   - [x] Implement suitable update/delete functionality, e.g. should a fundraiser owner be allowed to update its description?
   - [x] Implement suitable permissions, e.g. who is allowed to delete a pledge?
-  - [ ] Return the relevant status codes for both successful and unsuccessful requests to the API.
-  - [ ] Handle failed requests gracefully (e.g. you should have a custom 404 page rather than the default error page).
+  - [x] Return the relevant status codes for both successful and unsuccessful requests to the API.
+  - [x] Handle failed requests gracefully (e.g. you should have a custom 404 page rather than the default error page).
   - [x] Deploy React (Content avaialble in She Codes github)
   - [x] Use Token Authentication, including an endpoint to obtain a token along with the current user's details.
-  - [ ] Implement responsive design.
+  - [x] Implement responsive design.
 
   - [ ] Readme.md
     - [ ] A link to the deployed project.
@@ -45,18 +45,20 @@ Todo:
   - [x] Sign up
   - [x] Description
   - [x] Pledges
-  - [ ] Image - on each fundraiser
+  - [x] Image - on each fundraiser
   - [x] Login
   - [x] User side frontend to create a fundraiser
   - [x] User side frontend to create a pledge
   - [ ] Image upload tool for a user when creating funraiser
-- [ ] Leave the footer "By Hyeonah Cho" at the bottom right
-- [ ] More CSS work
-  - [ ] Hamburger for navbar
-  - [ ] Snap scroll.. I can't apply this one to Layout as it should only be applied HomePage but I don't like having two scroll bars in Home.. hang on.. is this the same on other pages regardless of having snap scroll? hmm what if I remove the Layout scroll on Home page? is it even possible? I can't remove the scrollbar on Home as the random snap behaviour will confuse users. I think a lot of other websites would have the same feature i.e. snap scroll only on Home page. How to they handle this issue?
+- [x] Leave the footer "By Hyeonah Cho" at the bottom left
+- [x] More CSS work
+  - [x] Hamburger for navbar
+  - [ ] Snap scroll.. I can't apply this one to Layout as it should only be applied to HomePage but I don't like having two scroll bars in Home.. hang on.. is this the same on other pages regardless of having snap scroll? hmm what if I remove the Layout scroll on Home page? is it even possible? I can't remove the scrollbar on Home as the random snap behaviour will confuse users. I think a lot of other websites would have the same feature i.e. snap scroll only on Home page. How to they handle this issue..?
 - [ ] Make the brand name and icon area as a link to Home
 - [ ] More backend work and the corresponding frontend work
   - [ ] Comments on fundraisers
   - [ ] Profile (When logged in, change the Login menu in the navbar to Profile and also add Logout somewhere - Refer to the Laravel project)
+  - [ ] Category for the type of the animal so it can be filtered in the Lives tab
+  - [ ] Other tings innitially planned for the backend.. comments without pledge, update etc like social media & Explanation about how the donated money works (overflew -> donated to other shelters, etc)
 - [ ] Make error messages better - Descriptive for users
 - [ ] Make functions (components/hooks) for repeated code

@@ -1,15 +1,18 @@
+import { Toaster } from "@/components/ui/sonner";
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar.jsx";
-import "./Layout.css";
 
 function Layout() {
   return (
-    <div>
+    <div className="min-h-screen bg-background text-foreground">
       <NavBar />
-      <main id="app-container">
+      <main className="mx-auto w-full max-w-7xl px-4 py-6">
         <Outlet />
       </main>
-      <footer>By Hyeonah Cho</footer>
+      <footer className="mx-auto w-full max-w-8xl px-4 py-6 text-sm text-muted-foreground">
+        By Hyeonah
+      </footer>
+      <Toaster />
     </div>
   );
 }
