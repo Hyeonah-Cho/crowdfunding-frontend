@@ -53,6 +53,7 @@ Todo:
 - [x] Leave the footer "By Hyeonah Cho" at the bottom left
 - [x] More CSS work
   - [x] Hamburger for navbar
+  - [ ] Adding toast - like Contact page but find a better place and colour for the message
   - [ ] Snap scroll.. I can't apply this one to Layout as it should only be applied to HomePage but I don't like having two scroll bars in Home.. hang on.. is this the same on other pages regardless of having snap scroll? hmm what if I remove the Layout scroll on Home page? is it even possible? I can't remove the scrollbar on Home as the random snap behaviour will confuse users. I think a lot of other websites would have the same feature i.e. snap scroll only on Home page. How to they handle this issue..?
 - [ ] Make the brand name and icon area as a link to Home
 - [ ] More backend work and the corresponding frontend work
